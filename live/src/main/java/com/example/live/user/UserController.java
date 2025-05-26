@@ -44,8 +44,10 @@ public class UserController {
     @DeleteMapping("/{id}")
     public String deleteUser(@PathVariable Long id) {
         try {
+            // find the user
+            userRepository.findById(id).get();
             userRepository.deleteById(id);
-            return "User deleted successfully";
+            return "User is terminated!";
         } catch (Exception e) {
             return "User not found";
         }
